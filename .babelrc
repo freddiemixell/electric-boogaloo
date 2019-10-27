@@ -1,0 +1,14 @@
+{
+    "presets": [
+        "@wordpress/babel-preset-default"
+    ],
+    "plugins": [
+        ["@babel/plugin-proposal-class-properties"],
+        [
+            "babel-plugin-styled-components",
+            {
+                "ssr": false
+            }
+        ]
+    ]
+  }
