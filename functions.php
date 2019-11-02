@@ -5,28 +5,20 @@
  * @package  Electric_Boogaloo
  */
 
-// Go Away jQuery.
-add_action( 'wp_enqueue_scripts', function() {
-	wp_dequeue_script('jquery');
-    wp_deregister_script('jquery');
-} );
+// // Register Script
+add_action( 'wp_enqueue_scripts', 'register_electric_scripts' );
 
-// Register Script
-function register_electric_scripts() {
+function register_electric_scripts(){
+	$base_dir = trailingslashit(get_template_directory());
+	$public_js_dir = '/public/';
+	$js_glob = glob( $base_dir . $public_js_dir . '*.js' );
 
-	$isDev = ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG );
-
-	$react_path = 'https://gzip-scripts.s3.amazonaws.com/react.prod.js.gz';
-	$react_dom_path = 'https://gzip-scripts.s3.amazonaws.com/react-dom.prod.js.gz';
-
-	// wp_register_script( 'awesome-react', $react_path, array(), false, true );
-	// wp_enqueue_script( 'awesome-react-dom', $react_dom_path, array( 'awesome-react' ), false, true );
-	
-	wp_register_script( 'electric_scripts', get_stylesheet_directory_uri() . '/public/app.js', array( 'wp-element' ), time(), true );
-	wp_enqueue_script( 'electric_scripts' );
-
+    foreach( $js_glob as $file ) {
+		// $file contains the name and extension of the file
+		$url = $public_js_dir.basename($file);
+        wp_enqueue_script( $file, get_template_directory_uri(). $url, null, time(), true );
+    }
 }
-add_action( 'init', 'register_electric_scripts' );
 
 // Frontend origin.
 require_once 'inc/frontend-origin.php';
