@@ -33,8 +33,8 @@ const Navigation = ( { menuSlug = 'main-nav' } ) => {
                     ari-expanded="false"
                 >
                     <NavLink to="/" pageTitle="Home" />
-                    <NavLink to="/about" pageTitle="About" />
-                    <NavLink to="/contact" pageTitle="Contact" />
+                    <NavLink to="/about-us" pageTitle="About Us" />
+                    <NavLink to="/sample-page" pageTitle="Sample Page" />
                 </ul>
             </div>
         </SiteNav>
