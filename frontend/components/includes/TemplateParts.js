@@ -14,7 +14,7 @@ export {
     SiteBranding,
 }
 
-const Logo = ( { siteLogo = 'https://digital-reactor.s3.amazonaws.com/logo.png' } ) => {
+const Logo = ( { siteLogo = '' } ) => {
     return (
         <Link to="/" rel="home" aria-current="page">
             <img height="52" className="custom-logo-link" src={ siteLogo } />
@@ -22,7 +22,7 @@ const Logo = ( { siteLogo = 'https://digital-reactor.s3.amazonaws.com/logo.png' 
     )
 };
 
-const SiteTitle = ({ isHome = true, homeUrl = '/', siteName = 'Digital Reactor' }) => {
+const SiteTitle = ({ isHome = true, homeUrl = '/', siteName = 'Electric Boogaloo' }) => {
     return isHome ? (
         <h1 className="site-title">
             <a href={ homeUrl } rel="home">
@@ -40,7 +40,7 @@ const SiteTitle = ({ isHome = true, homeUrl = '/', siteName = 'Digital Reactor' 
 }
 
 const SiteDescription = ( {
-    siteDescription = 'Managed Headless WordPress.',
+    siteDescription = 'WP GraphQL Apollo Theme.',
     isCustomizer = false
 } ) => {
    return ! isCustomizer ? <p className="site-description"> { siteDescription } </p> : null;
