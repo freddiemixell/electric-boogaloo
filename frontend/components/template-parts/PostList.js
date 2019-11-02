@@ -1,31 +1,6 @@
 import { Query } from 'react-apollo';
-import gql from 'graphql-tag';
-
 import Content from './Content';
-
-// This is the query that Apollo Client will send to the WP site.
-const POSTS_SEARCH_QUERY = gql`
-  query POSTS_SEARCH_QUERY {
-    posts {
-      edges {
-        node {
-          slug
-          content
-          postId
-          title
-          date
-          author {
-            name
-          }
-          featuredImage {
-            sourceUrl
-            altText
-          }
-        }
-      }
-    }
-  }
-`;
+import { POSTS_SEARCH_QUERY } from '../../store/Queries';
 
 const PostsList = () => (
   <Query query={POSTS_SEARCH_QUERY}>
